@@ -65,21 +65,29 @@ def moveCratesSameOrder(allStacks: list, movelist: list):
     return allStacks
 
 
-
 if __name__ == '__main__':
     instructions, cargo_array = getAllStaks()
+    instructions2, cargo_array2 = getAllStaks()
+
     for i, dictss in enumerate(cargo_array):
         dictss[i].reverse()
-    #print(cargo_array)
 
-    new_stack_list_v2 = moveCratesSameOrder(cargo_array, instructions)
-    #print(new_stack_list_v2)
+    stack_list = moveCrates(cargo_array, instructions)
+    string_answear1 = ""
+    for i, let in enumerate(stack_list):
+        if len(let[i]) > 0:
+            string_answear1 += let[i][-1]
+    print(f"Answear1: {string_answear1}")
 
-    # new_stack_list = moveCrates(cargo_array, instructions)
-    # #print(cargo_array)
-    #print(new_stack_list)
-    #print(new_stack_list_v2)
+    for i, dictss in enumerate(cargo_array2):
+        dictss[i].reverse()
+
+    print()
+    new_stack_list_v2 = moveCratesSameOrder(cargo_array2, instructions2)
+    string_answear2 = ""
     for i, let in enumerate(new_stack_list_v2):
         if len(let[i]) > 0:
-            print(let[i][-1])
+            string_answear2 += let[i][-1]
+    print(f"Answear2:  {string_answear2}")
+
 

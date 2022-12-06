@@ -1,7 +1,4 @@
 
-def splitItem(line: str):
-    pass
-
 def readItems(): #return object with all list of compartments
     all_items = list()
     with open('input.txt', 'r', encoding='UTF8') as elf_item:
@@ -11,7 +8,6 @@ def readItems(): #return object with all list of compartments
             compartment1 = line[0:mid]
             compartment2 = line[mid: len(line)]
             all_items.append({"item": [compartment1, compartment2]})
-            container = dict()
     return all_items
 
 def getValueLetter(letter: str):
@@ -29,21 +25,15 @@ def findCommonValueCompartment(items: list):
         compartment2 = item["item"][1]
         ignore_list = []
         for letter in compartment1:
-            # if go_to_next:
-                # go_to_next = False
-                # break
             for letter2 in compartment2:
                 if (letter == letter2) and (letter not in ignore_list):
                     ignore_list.append(letter)
                     value = getValueLetter(letter)
                     save_values_letters += value
-
-                    # go_to_next = True
-                    # break
-        #print(compartment1, compartment2)
     return save_values_letters
 
-def findCommonPerThree(items: list):
+
+def findCommonPerThree():
     with open('input.txt', 'r', encoding='UTF8') as elf_item:
         val = 0
         li = elf_item.readlines()
@@ -63,9 +53,8 @@ def findCommonPerThree(items: list):
 
 if __name__ == '__main__':
     items = readItems()
-    # findCommonValueCompartment(items)
-    #vals = findCommonValueCompartment(items)
-    # # print(vals)
-    #val = getValueLetter("z")
-    val = findCommonPerThree(items)
-    print(val)
+    findCommonValueCompartment(items)
+    val1 = findCommonValueCompartment(items)
+    print(f"Task 1: answear is: {val1}")
+    val2 = findCommonPerThree()
+    print(f"Task 2: answear is: {val2}")

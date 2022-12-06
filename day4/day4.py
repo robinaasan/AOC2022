@@ -47,12 +47,11 @@ def check_overlap_again(elf_pairs: list):
     return overlap_count
 
 
-
 if __name__ == '__main__':
     elfes_pairs = getElfesPairs()
 
     counts = check_overlap(elfes_pairs)
-    print(counts)
+    print(f"All in one of the list overlaps: {counts}")
 
     counts_again = check_overlap_again(elfes_pairs)
-    print(counts_again)
+    print(f"One number in one of the list overlaps: {counts_again}")
